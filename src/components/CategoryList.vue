@@ -3,11 +3,11 @@
     <div id="category-list">
       <div class="category" v-for="category in data.categories">
         <i v-bind:class="'fa fa-' + category.icon" aria-hidden="true"></i>
-        <p class="title">
+        <h1 class="title">
           {{ category.title }}
-        </p>
+        </h1>
         <p class="article-count">{{ category.totalArticle }} articles</p>
-        <p class="updated-on">Last Updated on{{ category.updatedOn }}</p>
+        <p class="sub-text">Last Updated on{{ category.updatedOn }}</p>
       </div>
     </div>
   </div>
@@ -31,52 +31,52 @@ export default {
 
 #category-list-wrapper {
   @include flexCenter(column);
-
   background: #fafafa;
 
   #category-list {
     @include flexCenter(row);
-
     flex-wrap: wrap;
     margin: 55px 10%;
 
     .category {
       @include flexCenter(column);
       @include card();
-
       cursor: pointer;
-      flex: 1 0 315px;
-      height: 220px;
+      flex: 1 0 310px;
+      height: 260px;
 
       i {
         color: $green;
-        font-size: 40px;
+        font-size: $icon-size-l;
+        margin: $spacing-size-d;
       }
 
-      p.title {
-        font-family: Lato;
-        font-size: $font-size-m;
-        font-style: normal;
-        font-weight: bold;
-        line-height: 24px;
-        text-align: center;
-      }
       p.article-count {
         color: $green;
+        margin: $spacing-size-e 0 0 0;
       }
 
-      p.article-count,
-      p.updated-on {
-        font-family: Lato;
-        font-size: $font-size-xs;
-        font-style: normal;
-        font-weight: normal;
-        line-height: 16px;
-        margin: 0;
-        padding: 0;
-        text-align: center;
+      p.sub-text {
+        margin: 0 0 $spacing-size-e 0;
       }
     }
   }
+}
+
+i {
+  @include icon();
+}
+
+h1,
+p {
+  @include normalFont();
+}
+
+h1 {
+  @include title();
+}
+
+p.sub-text {
+  @include subText();
 }
 </style>
