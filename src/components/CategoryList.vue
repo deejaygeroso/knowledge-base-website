@@ -42,8 +42,9 @@ export default {
 
     .category {
       @include flexCenter(column);
-      @include card() cursor: pointer;
+      @include card();
 
+      cursor: pointer;
       flex: 1 0 315px;
       height: 220px;
 
