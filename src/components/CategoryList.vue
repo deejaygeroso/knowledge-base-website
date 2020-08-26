@@ -42,6 +42,7 @@ export default {
     @include flexCenter(row);
     flex-wrap: wrap;
     margin: 55px 10%;
+    justify-content: flex-start;
 
     .category {
       @include flexCenter(column);
@@ -49,6 +50,7 @@ export default {
       cursor: pointer;
       flex: 1 0 310px;
       height: 260px;
+      max-width: 310px;
 
       i {
         color: $green;
