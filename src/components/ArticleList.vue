@@ -34,9 +34,7 @@
                   {{ article.updatedOn }}
                 </p>
               </div>
-              <div class="article-arrow-right">
-                >
-              </div>
+              <i class="fa fa-arrow-right" aria-hidden="true"></i>
             </div>
           </div>
         </div>
@@ -47,6 +45,7 @@
 
 <script>
 import { mapGetters, mapState } from "vuex";
+
 export default {
   computed: mapState({
     data: (state) => state.articles,
@@ -142,26 +141,15 @@ export default {
             margin: 0 0 $spacing-size-b 0;
             padding: $spacing-size-a $spacing-size-c;
 
-            i {
-              margin: 0 $spacing-size-d 0 $spacing-size-b;
-            }
-
             .article-content {
               cursor: pointer;
               flex: 1;
               margin: 0;
-              padding: 0;
+              padding: $spacing-size-b;
 
               p.sub-text {
-                font-size: $font-size-xxs;
+                sfont-size: $font-size-xxs;
               }
-            }
-
-            .article-arrow-right {
-              color: $green;
-              font-size: $font-size-l;
-              margin: 0;
-              padding: $spacing-size-c;
             }
           }
         }
