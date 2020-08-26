@@ -26,7 +26,11 @@
         </div>
         <div id="article-list-wrapper">
           <div id="article-list">
-            <div class="article" v-for="article in articles">
+            <div
+              class="article"
+              v-for="article in articles"
+              v-if="article.status === 'published'"
+            >
               <i v-bind:class="'fa fa-' + article.icon" aria-hidden="true"></i>
               <div class="article-content">
                 <h1>
