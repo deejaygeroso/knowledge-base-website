@@ -54,6 +54,12 @@ export default {
     category: (state) => state.articles.category,
   }),
   methods: mapActions("articles", ["clearListsAndCategory"]),
+  updated() {
+    const elem = this.$el;
+    if (elem) {
+      elem.scrollIntoView();
+    }
+  },
 };
 </script>
 
