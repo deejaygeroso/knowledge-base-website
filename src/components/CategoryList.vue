@@ -1,5 +1,5 @@
 <template>
-  <div id="category-list-container">
+  <div id="category-list-wrapper">
     <div id="category-list">
       <div class="category" v-for="category in data.categories">
         <i v-bind:class="'fa fa-' + category.icon" aria-hidden="true"></i>
@@ -29,7 +29,7 @@ export default {
 <style lang="scss" scoped>
 @import "../scss/_variables.scss";
 
-#category-list-container {
+#category-list-wrapper {
   @include flexCenter(column);
 
   background: #fafafa;
