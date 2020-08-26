@@ -15,6 +15,20 @@ const actions = {
 
 const mutations = {
   setCategories(state, categories) {
+    const compare = function(a, b) {
+      const bandA = a.order;
+      const bandB = b.order;
+
+      let comparison = 0;
+      if (bandA > bandB) {
+        comparison = 1;
+      } else if (bandA < bandB) {
+        comparison = -1;
+      }
+      return comparison;
+    };
+
+    categories.sort(compare);
     state.categories = categories;
   },
 };
