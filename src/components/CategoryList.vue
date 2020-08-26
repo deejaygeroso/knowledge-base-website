@@ -1,7 +1,11 @@
 <template>
   <div id="category-list-wrapper">
     <div id="category-list">
-      <div class="category" v-for="category in data.categories">
+      <div
+        class="category"
+        v-for="category in data.categories"
+        @click="fetch(category)"
+      >
         <i v-bind:class="'fa fa-' + category.icon" aria-hidden="true"></i>
         <h1 class="title">
           {{ category.title }}
@@ -14,12 +18,13 @@
 </template>
 
 <script>
-import { mapGetters, mapState } from "vuex";
+import { mapGetters, mapState, mapActions } from "vuex";
 
 export default {
   computed: mapState({
     data: (state) => state.categories,
   }),
+  methods: mapActions("articles", ["fetch"]),
   created(abc) {
     this.$store.dispatch("categories/fetch");
   },

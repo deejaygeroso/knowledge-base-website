@@ -1,15 +1,18 @@
 <template>
-  <div id="article-wrapper">
+  <div id="article-wrapper" v-if="articles.length !== 0">
     <div>
       <div id="breadcrumbs">
-        <p>All Categories<span> > Getting Started</span></p>
+        <p>
+          <span @click="clearListsAndCategory()">All Categories</span> > Getting
+          Started
+        </p>
       </div>
       <div id="article-content">
         <div id="selected-category">
           <div class="content">
-            <i class="fa fa-play" aria-hidden="true"></i>
+            <i v-bind:class="'fa fa-' + category.icon" aria-hidden="true"></i>
             <h1 class="title">
-              Getting Started
+              {{ category.title }}
             </h1>
             <p class="sub-text">Updated 2 weeks ago</p>
           </div>
@@ -17,14 +20,13 @@
           <div class="description">
             <i class="fa fa-info-circle" aria-hidden="true"></i>
             <p class="sub-text">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam quis
-              massa ac augue tristique sagittis.
+              {{ category.description }}
             </p>
           </div>
         </div>
         <div id="article-list-wrapper">
           <div id="article-list">
-            <div class="article" v-for="article in data.articles">
+            <div class="article" v-for="article in articles">
               <i v-bind:class="'fa fa-' + article.icon" aria-hidden="true"></i>
               <div class="article-content">
                 <h1>
@@ -44,15 +46,14 @@
 </template>
 
 <script>
-import { mapGetters, mapState } from "vuex";
+import { mapGetters, mapState, mapActions } from "vuex";
 
 export default {
   computed: mapState({
-    data: (state) => state.articles,
+    articles: (state) => state.articles.lists,
+    category: (state) => state.articles.category,
   }),
-  created(abc) {
-    this.$store.dispatch("articles/fetch");
-  },
+  methods: mapActions("articles", ["clearListsAndCategory"]),
 };
 </script>
 
@@ -71,11 +72,12 @@ export default {
 
       p {
         @include normalFont();
+        color: $text-gray;
         font-size: $font-size-xs;
-        color: $green;
 
         span {
-          color: $text-gray;
+          color: $green;
+          cursor: pointer;
         }
       }
     }
@@ -102,6 +104,10 @@ export default {
           i {
             font-size: $icon-size-l;
             margin: $spacing-size-e;
+          }
+
+          h1 {
+            white-space: nowrap;
           }
         }
 
