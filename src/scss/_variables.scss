@@ -1,4 +1,37 @@
-$font-family: 'Lato', Arial, Helvetica, sans-serif;
+$border-radius: 4px;
+$font-family: "Lato", Arial, Helvetica, sans-serif;
 $green: #03a84e;
 $text-black: #373737;
-$text-gray: #9C9AA6;
+$text-gray: #9c9aa6;
+
+$font-size-xs: 13px;
+$font-size-sm: 16px;
+$font-size-m: 20px;
+$font-size-l: 30px;
+
+$spacing-size-a: 5px;
+$spacing-size-b: 10px;
+$spacing-size-c: 15px;
+$spacing-size-d: 20px;
+$spacing-size-e: 30px;
+
+@mixin card {
+  background: #ffffff;
+  border: 1px solid #eeeeee;
+  box-sizing: border-box;
+  border-radius: $border-radius;
+  margin: $spacing-size-a;
+  padding: $spacing-size-d;
+}
+
+@mixin flex($direction) {
+  display: flex;
+  flex-direction: $direction;
+}
+
+@mixin flexCenter($direction) {
+  align-items: center;
+  display: flex;
+  flex-direction: $direction;
+  justify-content: center;
+}
