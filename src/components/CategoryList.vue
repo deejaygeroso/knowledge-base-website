@@ -135,7 +135,7 @@ export default {
     background: #fafafa;
 
     #category-list {
-      @include flexCenter(row);
+      @include flex(row);
       @include flexWrap();
       @include flexJustifyContent(flex-start);
 
@@ -145,6 +145,7 @@ export default {
       .category {
         @include categoryCard();
         @include flexValue(1 0 310px);
+        -ms-flex-pack: flex-start;
         height: 260px;
         max-width: 310px;
       }
