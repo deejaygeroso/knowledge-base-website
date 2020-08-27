@@ -18,7 +18,9 @@
               <i v-bind:class="'fa fa-' + category.icon" aria-hidden="true"></i>
               <h1 class="title">{{ category.title }}</h1>
               <p class="article-count">{{ category.totalArticle }} articles</p>
-              <p class="sub-text">Last Updated on{{ category.updatedOn }}</p>
+              <p class="sub-text">
+                Last Update {{ getDate(category.updatedOn) }}
+              </p>
             </div>
           </template>
         </vueper-slide>
@@ -35,7 +37,7 @@
           <i v-bind:class="'fa fa-' + category.icon" aria-hidden="true"></i>
           <h1 class="title">{{ category.title }}</h1>
           <p class="article-count">{{ category.totalArticle }} articles</p>
-          <p class="sub-text">Last Updated on{{ category.updatedOn }}</p>
+          <p class="sub-text">Last Update {{ getDate(category.updatedOn) }}</p>
         </div>
       </div>
     </div>
@@ -45,6 +47,7 @@
 <script>
 import { mapGetters, mapState, mapActions } from "vuex";
 import { VueperSlides, VueperSlide } from "vueperslides";
+import moment from "moment";
 
 export default {
   components: { VueperSlides, VueperSlide },
@@ -56,7 +59,12 @@ export default {
     categories: (state) => state.categories.lists,
     category: (state) => state.articles.category,
   }),
-  methods: mapActions("articles", ["fetch"]),
+  methods: {
+    ...mapActions("articles", ["fetch"]),
+    getDate(date) {
+      return moment(date).fromNow();
+    },
+  },
   created(abc) {
     this.$store.dispatch("categories/fetch");
   },
