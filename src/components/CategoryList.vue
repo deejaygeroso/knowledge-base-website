@@ -140,14 +140,15 @@ export default {
 
     #category-list {
       @include flexCenter(row);
-      flex-wrap: wrap;
-      justify-content: flex-start;
+      @include flexWrap();
+      @include flexJustifyContent(flex-start);
+
       margin: $spacing-size-e 0;
       width: 990px;
 
       .category {
         @include categoryCard();
-        flex: 1 0 310px;
+        @include flexValue(1 0 310px);
         height: 260px;
         max-width: 310px;
       }

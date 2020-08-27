@@ -53,11 +53,11 @@ export default {};
     width: 720px;
 
     input {
+      @include flexValue(1);
       border: 1px solid #eeeeee;
       border-bottom-left-radius: $border-radius;
       border-top-left-radius: $border-radius;
       color: $text-black;
-      flex: 1;
       font-size: $font-size-m;
       padding: 22px;
     }

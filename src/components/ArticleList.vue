@@ -127,7 +127,7 @@ export default {
 
         .content {
           @include flexCenter(column);
-          flex: 1;
+          @include flexValue(1);
           padding: $spacing-size-d;
 
           i.main-icon {
@@ -161,7 +161,7 @@ export default {
       }
 
       #article-list-wrapper {
-        flex: 1;
+        @include flexValue(1);
         margin: 0 0 0 60px;
         padding: 0;
 
@@ -172,13 +172,13 @@ export default {
           .article {
             @include flex(row);
             @include card();
-            align-items: center;
+            @include flexAlignItems(center);
             margin: 0 0 $spacing-size-b 0;
             padding: $spacing-size-a $spacing-size-c;
 
             .article-content {
+              @include flexValue(1);
               cursor: pointer;
-              flex: 1;
               margin: 0;
               padding: $spacing-size-b;
 
