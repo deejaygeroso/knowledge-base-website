@@ -1,7 +1,7 @@
 <template>
   <div id="category-container">
     <div id="categories-slide" v-if="Object.keys(category).length !== 0">
-      <h1>Other Categories</h1>
+      <h1 id="categories-slide-title">Other Categories</h1>
       <vueper-slides
         class="no-shadow"
         slide-multiple
@@ -110,6 +110,7 @@ export default {
 <style lang="scss" scoped>
 @import "../scss/_variables.scss";
 @import "../../node_modules/vueperslides/dist/vueperslides.css";
+
 #category-container {
   @include flexCenter(column);
   background: $background-color-2;
@@ -120,22 +121,16 @@ export default {
     text-align: center;
     width: 90%;
 
-    h1 {
+    h1#categories-slide-title {
       color: $text-gray;
       margin: $spacing-size-e 0 $spacing-size-c 0;
     }
 
     .category {
-      @include flexCenter(column);
-      @include card();
+      @include categoryCard();
       height: 100%;
       width: 100%;
       margin: 0;
-      i {
-        color: $green;
-        font-size: $icon-size-l;
-        margin: $spacing-size-d;
-      }
     }
   }
 
@@ -151,27 +146,10 @@ export default {
       width: 990px;
 
       .category {
-        @include flexCenter(column);
-        @include card();
-        cursor: pointer;
+        @include categoryCard();
         flex: 1 0 310px;
         height: 260px;
         max-width: 310px;
-
-        i {
-          color: $green;
-          font-size: $icon-size-l;
-          margin: $spacing-size-d;
-        }
-
-        p.article-count {
-          color: $green;
-          margin: $spacing-size-e 0 0 0;
-        }
-
-        p.sub-text {
-          margin: 0 0 $spacing-size-e 0;
-        }
       }
     }
   }

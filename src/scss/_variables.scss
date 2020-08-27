@@ -32,6 +32,27 @@ $spacing-size-e: 30px;
   padding: $spacing-size-d;
 }
 
+@mixin categoryCard {
+  @include flexCenter(column);
+  @include card();
+  cursor: pointer;
+
+  i {
+    color: $green;
+    font-size: $icon-size-l;
+    margin: $spacing-size-c;
+  }
+
+  p.article-count {
+    color: $green;
+    margin: $spacing-size-c 0 0 0;
+  }
+
+  p.sub-text {
+    margin: 0 0 $spacing-size-e 0;
+  }
+}
+
 @mixin flex($direction) {
   display: flex;
   flex-direction: $direction;
