@@ -12,7 +12,9 @@
           <div class="content">
             <i v-bind:class="'fa fa-' + category.icon" aria-hidden="true"></i>
             <h1 class="title">{{ category.title }}</h1>
-            <p class="sub-text">Updated 2 weeks ago</p>
+            <p class="sub-text">
+              Updated {{ getRelativeDate(category.updatedOn) }}
+            </p>
           </div>
           <div class="border-line"></div>
           <div class="description">
@@ -39,6 +41,7 @@
 
 <script>
 import { mapGetters, mapState, mapActions } from "vuex";
+import moment from "moment";
 
 export default {
   computed: mapState({
@@ -46,7 +49,13 @@ export default {
       state.articles.lists.filter((article) => article.status === "published"),
     category: (state) => state.articles.category,
   }),
-  methods: mapActions("articles", ["clearListsAndCategory"]),
+  methods: {
+    ...mapActions("articles", ["clearListsAndCategory"]),
+    formatDate(date) {
+      return moment(date).format("MMM Do YY");
+    },
+    getRelativeDate: (date) => moment(date).fromNow(),
+  },
   updated() {
     const elem = this.$el;
     if (elem) {

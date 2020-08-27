@@ -19,7 +19,7 @@
               <h1 class="title">{{ category.title }}</h1>
               <p class="article-count">{{ category.totalArticle }} articles</p>
               <p class="sub-text">
-                Last Update {{ getDate(category.updatedOn) }}
+                Last Update {{ getRelativeDate(category.updatedOn) }}
               </p>
             </div>
           </template>
@@ -37,7 +37,9 @@
           <i v-bind:class="'fa fa-' + category.icon" aria-hidden="true"></i>
           <h1 class="title">{{ category.title }}</h1>
           <p class="article-count">{{ category.totalArticle }} articles</p>
-          <p class="sub-text">Last Update {{ getDate(category.updatedOn) }}</p>
+          <p class="sub-text">
+            Last Update {{ getRelativeDate(category.updatedOn) }}
+          </p>
         </div>
       </div>
     </div>
@@ -61,9 +63,7 @@ export default {
   }),
   methods: {
     ...mapActions("articles", ["fetch"]),
-    getDate(date) {
-      return moment(date).fromNow();
-    },
+    getRelativeDate: (date) => moment(date).fromNow(),
   },
   created(abc) {
     this.$store.dispatch("categories/fetch");
