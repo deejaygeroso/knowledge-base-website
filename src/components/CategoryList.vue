@@ -80,16 +80,16 @@ export default {
         background: #ebeaea;
         color: #9e9ba8;
         font-size: 8px;
-        padding: 10px 15px;
         margin: 20px;
+        padding: 10px 15px;
       `;
       vueperSlideArrow[1].style.cssText = `
         border-radius: 50px;
         background: #ebeaea;
         color: #9e9ba8;
         font-size: 8px;
-        padding: 10px 15px;
         margin: 20px;
+        padding: 10px 15px;
       `;
     }
   },
@@ -100,6 +100,7 @@ export default {
 @import "../scss/_variables.scss";
 @import "../../node_modules/vueperslides/dist/vueperslides.css";
 #category-container {
+  @include flexCenter(column);
   background: $background-color-2;
 
   #categories-slide {
