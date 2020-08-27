@@ -107,16 +107,18 @@ export default {
         @include flexCenter(column);
         @include card();
         @include normalFont();
-        max-height: 320px;
+        max-height: 380px;
         margin: 0;
         padding: 0 0 40px 0;
         width: 280px;
 
         i.article-icon {
           height: 0;
+          margin: 0px;
+          padding: 0px;
           position: relative;
           right: -86px;
-          top: 48px;
+          top: 15px;
           width: 0;
 
           span {
