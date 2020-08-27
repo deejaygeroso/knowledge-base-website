@@ -21,7 +21,10 @@ module.exports = {
       {
         test: /\.js$/,
         loader: "babel-loader",
-        include: [path.join(__dirname, "src")],
+        include: [
+          path.join(__dirname, "src"),
+          /node_modules\/webpack-dev-server/,
+        ],
       },
       {
         test: /\.scss$/,
@@ -52,6 +55,11 @@ module.exports = {
     },
   },
   devServer: {
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Headers":
+        "Origin, X-Requested-With, Content-Type, Accept",
+    },
     contentBase: path.join(__dirname, "public"),
     disableHostCheck: true,
     port: 9000,
@@ -82,4 +90,5 @@ module.exports = {
       });
     },
   },
+  devtool: "eval-source-map",
 };
