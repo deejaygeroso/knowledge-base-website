@@ -1,20 +1,20 @@
 import axios from "axios";
 
 const state = () => ({
-  categories: [],
+  lists: [],
 });
 
 const getters = {};
 
 const actions = {
-  fetch: async ({ commit, state }) => {
+  fetch: async ({ commit }) => {
     const { data } = await axios.get("/api/categories");
     commit("setCategories", data);
   },
 };
 
 const mutations = {
-  setCategories(state, categories) {
+  setCategories(state, lists) {
     const compare = function(a, b) {
       const bandA = a.order;
       const bandB = b.order;
@@ -28,8 +28,8 @@ const mutations = {
       return comparison;
     };
 
-    categories.sort(compare);
-    state.categories = categories;
+    lists.sort(compare);
+    state.lists = lists;
   },
 };
 

@@ -12,7 +12,7 @@
         :visible-slides="3"
         :slide-ratio="1 / 4"
       >
-        <vueper-slide v-for="category in data.categories" :key="category.id">
+        <vueper-slide v-for="category in categoriesFiltered" :key="category.id">
           <template v-slot:content>
             <div class="category" @click="fetch(category)">
               <i v-bind:class="'fa fa-' + category.icon" aria-hidden="true"></i>
@@ -30,7 +30,7 @@
           @click="fetch(category)"
           :key="category.id"
           class="category"
-          v-for="category in data.categories"
+          v-for="category in categories"
         >
           <i v-bind:class="'fa fa-' + category.icon" aria-hidden="true"></i>
           <h1 class="title">{{ category.title }}</h1>
@@ -49,7 +49,11 @@ import { VueperSlides, VueperSlide } from "vueperslides";
 export default {
   components: { VueperSlides, VueperSlide },
   computed: mapState({
-    data: (state) => state.categories,
+    categoriesFiltered: (state) =>
+      state.categories.lists.filter(
+        (category) => category.id !== state.articles.category.id
+      ),
+    categories: (state) => state.categories.lists,
     category: (state) => state.articles.category,
   }),
   methods: mapActions("articles", ["fetch"]),
