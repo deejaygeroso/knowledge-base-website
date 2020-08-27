@@ -9,8 +9,14 @@
       </div>
       <div id="article-content">
         <div id="selected-category">
+          <i class="article-icon fas fa-sticky-note"
+            >&nbsp;<span>{{ category.totalArticle }}</span></i
+          >
           <div class="content">
-            <i v-bind:class="'fa fa-' + category.icon" aria-hidden="true"></i>
+            <i
+              v-bind:class="'main-icon fa fa-' + category.icon"
+              aria-hidden="true"
+            ></i>
             <h1 class="title">{{ category.title }}</h1>
             <p class="sub-text">
               Updated {{ getRelativeDate(category.updatedOn) }}
@@ -103,14 +109,28 @@ export default {
         @include normalFont();
         max-height: 320px;
         margin: 0;
+        padding: 0 0 40px 0;
         width: 280px;
+
+        i.article-icon {
+          height: 0;
+          position: relative;
+          right: -86px;
+          top: 48px;
+          width: 0;
+
+          span {
+            color: $text-gray;
+            font-size: $font-size-sm;
+          }
+        }
 
         .content {
           @include flexCenter(column);
           flex: 1;
           padding: $spacing-size-d;
 
-          i {
+          i.main-icon {
             font-size: $icon-size-l;
             margin: $spacing-size-e;
           }
@@ -163,7 +183,7 @@ export default {
               padding: $spacing-size-b;
 
               p.sub-text {
-                sfont-size: $font-size-xxs;
+                font-size: $font-size-xxs;
               }
             }
           }
