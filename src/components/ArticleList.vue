@@ -158,6 +158,7 @@ export default {
           p.sub-text {
             line-height: $font-size-sm;
             text-align: center;
+            width: 220px;
           }
         }
       }
