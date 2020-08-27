@@ -86,22 +86,18 @@ export default {
     // Hacky way of updating vueperslides arrow style.
     const vueperSlideArrow = this.$el.querySelectorAll(".vueperslides__arrow");
     if (vueperSlideArrow[0] && vueperSlideArrow[1]) {
-      vueperSlideArrow[0].style.cssText = `
+      const cssText = `
         border-radius: 50px;
         background: #ebeaea;
         color: #9e9ba8;
         font-size: 8px;
-        margin: 20px;
-        padding: 10px 15px;
+        height: 50px;
+        margin: 0;
+        padding: 0;
+        width: 50px;
       `;
-      vueperSlideArrow[1].style.cssText = `
-        border-radius: 50px;
-        background: #ebeaea;
-        color: #9e9ba8;
-        font-size: 8px;
-        margin: 20px;
-        padding: 10px 15px;
-      `;
+      vueperSlideArrow[0].style.cssText = cssText;
+      vueperSlideArrow[1].style.cssText = cssText;
     }
   },
 };

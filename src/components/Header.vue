@@ -59,7 +59,7 @@ export default {};
       border-top-left-radius: $border-radius;
       color: $text-black;
       font-size: $font-size-m;
-      padding: 22px;
+      padding: 0 22px;
     }
 
     button {
