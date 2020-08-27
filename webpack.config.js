@@ -3,9 +3,10 @@
 const path = require("path");
 const { VueLoaderPlugin } = require("vue-loader");
 const dataObj = require("./data/data.json");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-  entry: ["./src/app.js"],
+  entry: ["babel-polyfill", "./src/app.js"],
   output: {
     path: path.resolve(__dirname, "./dist"),
     publicPath: "/dist/",
@@ -16,6 +17,11 @@ module.exports = {
       {
         test: /\.vue$/,
         use: "vue-loader",
+      },
+      {
+        test: /\.js$/,
+        loader: "babel-loader",
+        include: [path.join(__dirname, "src")],
       },
       {
         test: /\.scss$/,
@@ -32,7 +38,14 @@ module.exports = {
       },
     ],
   },
-  plugins: [new VueLoaderPlugin()],
+  plugins: [
+    new VueLoaderPlugin(),
+    new HtmlWebpackPlugin({
+      filename: path.join(__dirname, "dist", "index.html"),
+      template: path.join(__dirname, "public", "index.html"),
+      inject: true,
+    }),
+  ],
   resolve: {
     alias: {
       fonts: path.resolve(__dirname, "src/assets/fonts"),
