@@ -11,34 +11,22 @@
         <div id="selected-category">
           <div class="content">
             <i v-bind:class="'fa fa-' + category.icon" aria-hidden="true"></i>
-            <h1 class="title">
-              {{ category.title }}
-            </h1>
+            <h1 class="title">{{ category.title }}</h1>
             <p class="sub-text">Updated 2 weeks ago</p>
           </div>
           <div class="border-line"></div>
           <div class="description">
             <i class="fa fa-info-circle" aria-hidden="true"></i>
-            <p class="sub-text">
-              {{ category.description }}
-            </p>
+            <p class="sub-text">{{ category.description }}</p>
           </div>
         </div>
         <div id="article-list-wrapper">
           <div id="article-list">
-            <div
-              class="article"
-              v-for="article in articles"
-              v-if="article.status === 'published'"
-            >
+            <div :key="article.id" class="article" v-for="article in articles">
               <i v-bind:class="'fa fa-' + article.icon" aria-hidden="true"></i>
               <div class="article-content">
-                <h1>
-                  {{ article.title }}
-                </h1>
-                <p class="sub-text">
-                  {{ article.updatedOn }}
-                </p>
+                <h1>{{ article.title }}</h1>
+                <p class="sub-text">{{ article.updatedOn }}</p>
               </div>
               <i class="fa fa-arrow-right" aria-hidden="true"></i>
             </div>
@@ -54,7 +42,8 @@ import { mapGetters, mapState, mapActions } from "vuex";
 
 export default {
   computed: mapState({
-    articles: (state) => state.articles.lists,
+    articles: (state) =>
+      state.articles.lists.filter((article) => article.status === "published"),
     category: (state) => state.articles.category,
   }),
   methods: mapActions("articles", ["clearListsAndCategory"]),
@@ -72,7 +61,8 @@ export default {
 
 #article-wrapper {
   @include flexCenter(column);
-  background: #fafafa;
+  background: $background-color-2;
+  padding: 0 0 50px 0;
 
   div {
     #breadcrumbs {
