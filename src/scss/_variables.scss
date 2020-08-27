@@ -61,10 +61,10 @@ $spacing-size-e: 30px;
   display: flex;
 }
 
-@mixin flexAlignItems($direction) {
-  -ms-align-items: $direction;
-  -webkit-align-items: $direction;
-  flex-direction: $direction;
+@mixin flexAlignItems($value) {
+  -ms-flex-align: center;
+  -webkit-align-items: $value;
+  flex-direction: $value;
 }
 
 @mixin flexCenter($direction) {
@@ -80,7 +80,7 @@ $spacing-size-e: 30px;
 }
 
 @mixin flexJustifyContent($value) {
-  -ms-justify-content: $value;
+  -ms-flex-pack: $value;
   -webkit-justify-content: $value;
   justify-content: $value;
 }
