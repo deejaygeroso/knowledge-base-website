@@ -28,7 +28,9 @@
               <i v-bind:class="'fa fa-' + article.icon" aria-hidden="true"></i>
               <div class="article-content">
                 <h1>{{ article.title }}</h1>
-                <p class="sub-text">{{ article.updatedOn }}</p>
+                <p class="sub-text">
+                  Updated {{ formatDate(article.updatedOn) }}
+                </p>
               </div>
               <i class="fa fa-arrow-right" aria-hidden="true"></i>
             </div>
@@ -51,9 +53,7 @@ export default {
   }),
   methods: {
     ...mapActions("articles", ["clearListsAndCategory"]),
-    formatDate(date) {
-      return moment(date).format("MMM Do YY");
-    },
+    formatDate: (date) => moment(date).format("MMMM D, YYYY"),
     getRelativeDate: (date) => moment(date).fromNow(),
   },
   updated() {
