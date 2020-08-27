@@ -74,7 +74,6 @@ export default {
     // Hacky way of updating vueperslides arrow style.
     const vueperSlideArrow = this.$el.querySelectorAll(".vueperslides__arrow");
     if (vueperSlideArrow[0] && vueperSlideArrow[1]) {
-      console.log("vueperSlideArrow", vueperSlideArrow.style);
       vueperSlideArrow[0].style.cssText = `
         border-radius: 50px;
         background: #ebeaea;
