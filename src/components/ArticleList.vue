@@ -9,18 +9,14 @@
       </div>
       <div id="article-content">
         <div id="selected-category">
-          <i class="article-icon fas fa-sticky-note"
-            >&nbsp;<span>{{ category.totalArticle }}</span></i
-          >
+          <i class="article-icon fas fa-sticky-note">
+            &nbsp;
+            <span>{{ category.totalArticle }}</span>
+          </i>
           <div class="content">
-            <i
-              v-bind:class="'main-icon fa fa-' + category.icon"
-              aria-hidden="true"
-            ></i>
+            <i v-bind:class="'main-icon fa fa-' + category.icon" aria-hidden="true"></i>
             <h1 class="title">{{ category.title }}</h1>
-            <p class="sub-text">
-              Updated {{ getRelativeDate(category.updatedOn) }}
-            </p>
+            <p class="sub-text">Updated {{ getRelativeDate(category.updatedOn) }}</p>
           </div>
           <div class="border-line"></div>
           <div class="description">
@@ -34,9 +30,7 @@
               <i v-bind:class="'fa fa-' + article.icon" aria-hidden="true"></i>
               <div class="article-content">
                 <h1>{{ article.title }}</h1>
-                <p class="sub-text">
-                  Updated {{ formatDate(article.updatedOn) }}
-                </p>
+                <p class="sub-text">Updated {{ formatDate(article.updatedOn) }}</p>
               </div>
               <i class="fa fa-arrow-right" aria-hidden="true"></i>
             </div>

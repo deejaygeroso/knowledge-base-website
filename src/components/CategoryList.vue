@@ -14,33 +14,14 @@
       >
         <vueper-slide v-for="category in categoriesFiltered" :key="category.id">
           <template v-slot:content>
-            <div class="category" @click="fetch(category)">
-              <i v-bind:class="'fa fa-' + category.icon" aria-hidden="true"></i>
-              <h1 class="title">{{ category.title }}</h1>
-              <p class="article-count">{{ category.totalArticle }} articles</p>
-              <p class="sub-text">
-                Last Update {{ getRelativeDate(category.updatedOn) }}
-              </p>
-            </div>
+            <category :category="category"></category>
           </template>
         </vueper-slide>
       </vueper-slides>
     </div>
     <div id="category-list-wrapper" v-if="Object.keys(category).length === 0">
       <div id="category-list">
-        <div
-          @click="fetch(category)"
-          :key="category.id"
-          class="category"
-          v-for="category in categories"
-        >
-          <i v-bind:class="'fa fa-' + category.icon" aria-hidden="true"></i>
-          <h1 class="title">{{ category.title }}</h1>
-          <p class="article-count">{{ category.totalArticle }} articles</p>
-          <p class="sub-text">
-            Last Update {{ getRelativeDate(category.updatedOn) }}
-          </p>
-        </div>
+        <category :category="category" :key="category.id" v-for="category in categories"></category>
       </div>
     </div>
   </div>
@@ -49,10 +30,11 @@
 <script>
 import { mapGetters, mapState, mapActions } from "vuex";
 import { VueperSlides, VueperSlide } from "vueperslides";
+import Category from "./Category.vue";
 import moment from "moment";
 
 export default {
-  components: { VueperSlides, VueperSlide },
+  components: { category: Category, VueperSlides, VueperSlide },
   computed: mapState({
     categoriesFiltered: (state) =>
       state.categories.lists.filter(
@@ -145,7 +127,6 @@ export default {
       .category {
         @include categoryCard();
         @include flexValue(1 0 310px);
-        -ms-flex-pack: flex-start;
         height: 260px;
         max-width: 310px;
       }
