@@ -5,18 +5,31 @@
       <h3>Everything you need to manage your messaging</h3>
     </div>
     <div id="search">
-      <input placeholder="Search for answers" />
-      <button>
+      <input v-model="message" placeholder="Search for answers" @keyup.enter="search(message)" />
+      <button @click="search(message)">
         <i class="fa fa-search fa-lg" aria-hidden="true"></i>
       </button>
     </div>
+    <div v-for="result in searchResult" :key="result.id">{{ result.title }}</div>
   </div>
 </template>
 
 <script>
-import { mapGetters, mapState } from "vuex";
+import { mapActions, mapGetters, mapState } from "vuex";
 
-export default {};
+export default {
+  computed: mapState({
+    searchResult: (state) => state.articles.searchResult,
+  }),
+  data: function () {
+    return {
+      message: "",
+    };
+  },
+  methods: {
+    ...mapActions("articles", ["search"]),
+  },
+};
 </script>
 
 <style lang="scss" scoped>
